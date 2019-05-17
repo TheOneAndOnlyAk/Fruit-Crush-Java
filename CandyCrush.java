@@ -1,3 +1,4 @@
+
 //package finalProject;
 import javax.swing.JFrame;
 import javax.swing.*;
@@ -103,3 +104,8 @@ public class CandyCrush extends JPanel{
    } // end of main method
 
 } // end of the Candy Crush Class
+package finalProject;
+
+public class CandyCrush {
+
+}
