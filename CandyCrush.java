@@ -30,38 +30,39 @@ public class CandyCrush extends JPanel{
       for(int r = 0; r < 7; r++)
          for(int c = 0; c < 7; c++)
          {
-            matrix[r][c] = 0;
+            int random = (int)(Math.random() * 5 + 1);
+            matrix[r][c] = random;
             board[r][c] = new JButton();
-            board[r][c].setIcon(refresh());
+            board[r][c].setIcon(iconSet(random));
             board[r][c].setBackground(Color.WHITE);
             board[r][c].addActionListener( new Handler1(r, c) );
             center.add(board[r][c]);
          } // end of for loop
-      
+               
    }
    
-   public ImageIcon refresh(){
-      int random = (int)(Math.random() * 5 + 1);
-      if(random == 1){
+   public ImageIcon iconSet(int r){
+      //int random = (int)(Math.random() * 5 + 1);
+      if(r == 1){
          ImageIcon bananaImage = new ImageIcon("/Users/Jacob/Downloads/Banana.png");         
          Image img = bananaImage.getImage();  
          Image resizedImage = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
          return new ImageIcon(resizedImage);
       }
-      else if(random == 2) {
+      else if(r == 2) {
          ImageIcon appleImage = new ImageIcon("/Users/Jacob/Downloads/Apple.png");         
          Image img = appleImage.getImage();  
          Image resizedImage = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
          return new ImageIcon(resizedImage);
       }
-      else if(random == 3) {
+      else if(r == 3) {
          ImageIcon grapesImage = new ImageIcon("/Users/Jacob/Downloads/Grapes.jpg");         
          Image img = grapesImage.getImage();  
          Image resizedImage = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
          return new ImageIcon(resizedImage);
       }
       
-      else if(random == 4) {
+      else if(r == 4) {
          ImageIcon orangeImage = new ImageIcon("/Users/Jacob/Downloads/Orange.jpg");         
          Image img = orangeImage.getImage();  
          Image resizedImage = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
@@ -73,7 +74,7 @@ public class CandyCrush extends JPanel{
          Image resizedImage = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
          return new ImageIcon(resizedImage);
       }
-   }
+   } // end of iconSet method
    
    private class Handler1 implements ActionListener {
       
@@ -82,19 +83,14 @@ public class CandyCrush extends JPanel{
       {
          myRow = r;
          myCol = c;
-      }
+      } // end of Hander1 constructor 
       
-      public void actionPerformed(ActionEvent e) {
-      
-      
+      public void actionPerformed(ActionEvent e) {      
       
       } // end of actionPerformed method
    
-   
    } // end of Handler1 class
-   
-   
-   
+    
    public static void main(String [] args) throws Throwable {
       UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
       JFrame frame = new JFrame("Candy Crush");
@@ -105,9 +101,5 @@ public class CandyCrush extends JPanel{
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits frame if red X is clicked
       
    } // end of main method
-   
-   
-   
-   //public int[][] get(){};
 
 } // end of the Candy Crush Class
