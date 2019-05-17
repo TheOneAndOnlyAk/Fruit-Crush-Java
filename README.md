@@ -6,7 +6,7 @@ This game is a Java take on the popular game Candy Crush. The data is stored in 
 
 ## GUI
 
-# Front-End
+### Front-End
 1. The front end uses a Grid to store an array of JButtons
 2. Each JButton holds a fruit image that randomly changes each time the program resets
 
