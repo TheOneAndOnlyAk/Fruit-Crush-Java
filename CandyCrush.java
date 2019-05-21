@@ -96,8 +96,55 @@ public class CandyCrush extends JPanel{
 	 else
 		 return false;
  }
+ public void switches(int r1, int c1, int r2, int c2)
+ {
+	 swap(r1,c1,r2,c2);
+	 checkScore(r1,c1);
+	 checkScore(r2,c2);
+	 replace(c1);
+	 replace(c2);
+ }
+
  
- private class Handler1 implements ActionListener {
+ public void checkScore(int r, int c) 
+ {
+	 
+ }
+ public int checkScoreHelper(int r, int c)
+ {
+	 return 0;
+ }
+ public void remove(int r, int c)
+ {
+	 matrix[r][c] = 0;
+ }
+ public void replace(int c)
+ {
+	 for(int i = matrix.length-1; i >=0; i--)
+		 if(matrix[i][c] == 0)
+		 {
+			 slide(i,c);
+			 i--;
+		 }
+	 int k = 0;
+	 int random = (int)(Math.random() * 5 + 1);
+	 while(matrix[k][c]==0)
+	 {
+		 random = (int)(Math.random() * 5 + 1);
+		 matrix[k][c] = random;
+		 board[k][c].setIcon(iconSet(random));
+	 }
+ }
+
+
+public void slide(int r, int c) 
+{
+	for(int i = r; i>0; i++)
+		swap(i,c,i-1,c);		
+}
+
+
+private class Handler1 implements ActionListener {
     
     private int myRow, myCol;
     public Handler1(int r, int c)
