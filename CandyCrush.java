@@ -108,12 +108,73 @@ public class CandyCrush extends JPanel{
  
  public void checkScore(int r, int c) 
  {
-	 
+	checkVert(r, c);
+	checkHoriz(r, c);
+	checkMajDiag(r,c);
+	checkMinDiag(r,c);
+	
  }
- public int checkScoreHelper(int r, int c)
- {
-	 return 0;
- }
+ private void checkMinDiag(int r, int c) {
+	// TODO Auto-generated method stub
+	
+}
+
+private void checkMajDiag(int r, int c) {
+	// TODO Auto-generated method stub
+	
+}
+
+private void checkHoriz(int r, int c) {
+	int rightCount = 0;
+	int leftCount = 0;
+	int ri = r + 1; //copy of column variable for right
+	int l = r - 1; //copy of column variable for left
+	while(matrix[r][c] == matrix[ri][c])//counts the number of same candies right
+	{
+		rightCount++;
+		ri++;
+	}
+	while(matrix[r][c] == matrix[l][c])//counts the number of same candies left
+	{
+		leftCount++;
+		l--;
+	}
+	if(rightCount != 0 && leftCount != 0)//if there is at least one candy on each side
+		for(int i = l; i<=ri; i++)
+			remove(i, c);
+	else if(rightCount >= 2)//if there are at least 2 on the right side
+		for(int k = r; k<= ri; k++)
+			remove(k, c);
+	else if(leftCount >= 2)//if there are at least 2 on the left side
+		for(int j = r; j >= l; j--)
+			remove(j, c);	
+}
+
+private void checkVert(int r, int c) {
+	int upCount = 0;
+	int downCount = 0;
+	int d = c - 1; //copy of column variable for down
+	int u = c + 1; //copy of column variable for up
+	while(matrix[r][c] == matrix[r][u])//counts the number of same candies up
+	{
+		upCount++;
+		u++;
+	}
+	while(matrix[r][c] == matrix[r][d])//counts the number of same candies down
+	{
+		downCount++;
+		d--;
+	}
+	if(downCount != 0 && upCount != 0)//if there is at least one candy on each side
+		for(int i = d; i<=c; i++)
+			remove(r, i);
+	else if(upCount >= 2)//if there are at least 2 on the up side
+		for(int k = c; k<= u; k++)
+			remove(r, k);
+	else if(downCount >= 2)//if there are at least 2 on the down side
+		for(int j = c; j >= d; j--)
+			remove(r, j);	
+}
  public void remove(int r, int c)
  {
 	 matrix[r][c] = 0;
