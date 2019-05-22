@@ -1,18 +1,20 @@
+//Author: Jacob Yoseph
 
 //package finalProject;
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import sun.audio.*;
+import java.io.*;
 
 public class CandyCrush extends JPanel{
-   //private JFrame frame;
+
    private JButton[][] board;
    private int[][] matrix;
    private JLabel title;
 
    public CandyCrush(){
-      //gui();
       setLayout(new BorderLayout());
       
       JPanel north = new JPanel();
@@ -42,8 +44,9 @@ public class CandyCrush extends JPanel{
                
    }
    
-   public ImageIcon iconSet(int r){
-      //int random = (int)(Math.random() * 5 + 1);
+   //Pre-Condition: Integer will be in a range of [1,5] 
+   //Post-Condition: returns 
+   public ImageIcon iconSet(int r) {
       if(r == 1){
          ImageIcon bananaImage = new ImageIcon("/Users/Jacob/Downloads/Banana.png");         
          Image img = bananaImage.getImage();  
@@ -100,7 +103,28 @@ public class CandyCrush extends JPanel{
       frame.setContentPane(new CandyCrush());
       frame.setVisible(true); // shows the frame
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits frame if red X is clicked
-      
+      backgroundMusic("/Users/Jacob/Desktop/Java Develoment/Background Music.wav");
+            
    } // end of main method
+   
+   //Just added this feature for background music
+   public static void backgroundMusic(String filepath) {
+      InputStream music;
+      
+      try {
+         music = new FileInputStream(new File(filepath));
+         AudioStream audios = new AudioStream(music);
+         //AudioData testingData = audios.getData();
+         //ContinuousAudioDataStream loop = new ContinuousAudioDataStream(testingData);
+         AudioPlayer.player.start(audios);
+            
+      }
+      
+      catch(Exception e) {
+         System.out.println(e);
+      } 
+      
+   } // end of BackgroundMusic
+
 
 } // end of the Candy Crush Class
