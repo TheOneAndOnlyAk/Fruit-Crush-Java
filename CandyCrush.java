@@ -170,10 +170,6 @@ private class Handler1 implements ActionListener {
                   
       
     } // end of actionPerformed method
-    
-    public int getMyRow() {return myRow;}
-    
-    public int getMyCol() {return myCol;}
  
  } // end of Handler1 class
   
