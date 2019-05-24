@@ -144,8 +144,6 @@ public void slide(int r, int c)
 private class Handler1 implements ActionListener {
     
     private int myRow, myCol;
-    private int oneMyRow, oneMyCol;
-    private int count;
     public Handler1(int r, int c)
     {
        myRow = r;
