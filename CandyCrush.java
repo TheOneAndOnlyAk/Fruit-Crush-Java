@@ -105,7 +105,103 @@ public class CandyCrush extends JPanel{
  
  public void checkScore(int r, int c) 
  {
-	 
+	checkVert(r, c);
+	checkHoriz(r, c);
+	//checkMajDiag(r,c);
+	//checkMinDiag(r,c);
+	
+ }/*
+ private void checkMinDiag(int r, int c) {
+	// TODO Auto-generated method stub
+	
+}
+*/
+/*
+private void checkMajDiag(int r, int c) {
+	int posCount = 0;
+	int negCount = 0;
+	int pr = r - 1;//postive row
+	int pc = c - 1;//postive column
+	int nr = r + 1;//negative row
+	int nc = c + 1;
+	while(((pr >= 0)&&(pc >= 0))&&(matrix[r][c] == matrix[pr][pc]))
+	{
+		posCount++;
+		pr--;
+		pc--;
+	}
+	while(((nr < matrix[r].length)&&(nc < matrix.length))&&(matrix[r][c] == matrix[nr][nc]))
+	{
+		posCount++;
+		nr++;
+		nc++;
+	}
+	if(posCount != 0 && negCount != 0)//if there is at least one candy on each side
+		for(int i = pr; i<= nr; i++)
+			remove(i, pc--);
+	else if(posCount >= 2)//if there are at least 2 on the right side
+		for(int k = r; k <= pr; k--)
+			remove(k, c);
+	else if(negCount >= 2)//if there are at least 2 on the left side
+		for(int j = r; j >= l; j--)
+			remove(j, c);	
+	
+}
+*/
+private void checkHoriz(int r, int c) {
+	int rightCount = 0;
+	int leftCount = 0;
+	int ri = r + 1; //copy of column variable for right
+	int l = r - 1; //copy of column variable for left
+	while((r < matrix[r].length)&&(matrix[r][c] == matrix[ri][c]))//counts the number of same candies right
+	{
+		rightCount++;
+		ri++;
+	}
+	while((l >= 0)&&(matrix[r][c] == matrix[l][c]))//counts the number of same candies left
+	{
+		leftCount++;
+		l--;
+	}
+	if(rightCount != 0 && leftCount != 0)//if there is at least one candy on each side
+		for(int i = l; i<=ri; i++)
+			remove(i, c);
+	else if(rightCount >= 2)//if there are at least 2 on the right side
+		for(int k = r; k<= ri; k++)
+			remove(k, c);
+	else if(leftCount >= 2)//if there are at least 2 on the left side
+		for(int j = r; j >= l; j--)
+			remove(j, c);	
+}
+
+private void checkVert(int r, int c) {
+	int upCount = 0;
+	int downCount = 0;
+	int d = c - 1; //copy of column variable for down
+	int u = c + 1; //copy of column variable for up
+	while((u <= 0) && (matrix[r][c] == matrix[r][u]))//counts the number of same candies up
+	{
+		upCount++;
+		u++;
+	}
+	while((d > matrix.length) && (matrix[r][c] == matrix[r][d]))//counts the number of same candies down
+	{
+		downCount++;
+		d--;
+	}
+	if(downCount != 0 && upCount != 0)//if there is at least one candy on each side
+		for(int i = d; i<=c; i++)
+			remove(r, i);
+	else if(upCount >= 2)//if there are at least 2 on the up side
+		for(int k = c; k<= u; k++)
+			remove(r, k);
+	else if(downCount >= 2)//if there are at least 2 on the down side
+		for(int j = c; j >= d; j--)
+			remove(r, j);	
+}
+ public void remove(int r, int c)
+ {
+	 matrix[r][c] = 0;
  }
  public int checkScoreHelper(int r, int c)
  {
