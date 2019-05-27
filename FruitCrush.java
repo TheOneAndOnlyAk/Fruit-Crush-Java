@@ -85,8 +85,6 @@ public class FruitCrush extends JPanel{
 	 fruits[r2][c2] = temp;
 	 board[r1][c1].setIcon(iconSet(fruits[r1][c1]));
 	 board[r2][c2].setIcon(iconSet(fruits[r2][c2]));
-	 System.out.println(fruits[r1][c1]);
-	 System.out.println(fruits[r2][c2]);
  }
  
  public boolean switchable(int r1, int r2, int c1, int c2)//checks to see if two squares are adjacent to be swapped
@@ -123,13 +121,11 @@ public void checkHoriz(int r, int c) {
 	{
 		rightCount++;
 		ri++;
-		System.out.println(ri+" right");
 	}
 	while((l >= 0)&&(fruits[r][c] == fruits[r][l]))//counts the number of same candies left
 	{
 		leftCount++;
 		l--;
-		System.out.println(l+" left");
 	}
 	if(rightCount != 0 && leftCount != 0)//if there is at least one candy on each side
 		for(int i = l+1; i<=ri-1; i++)
@@ -188,6 +184,8 @@ public void checkVert(int r, int c) {
 			 slide(i,c);//moves "0"s to top of column
 			 i--;
 		 }
+		 else
+			 checkScore(i,c);
 	 int k = 0;
 	 int random = (int)(Math.random() * 5 + 1);//generate random number
 	 while((k<fruits.length)&&(fruits[k][c]==0))//replaces all "0"s with new fruits
@@ -195,6 +193,7 @@ public void checkVert(int r, int c) {
 		 random = (int)(Math.random() * 5 + 1);
 		 fruits[k][c] = random;
 		 board[k][c].setIcon(iconSet(random));
+		 checkScore(k,c);
 		 k++;
 	 }
  }
