@@ -4,6 +4,11 @@ CS AB Final Project: Candy Crush implemented in Java
 ## Overview
 This game is a Java take on the popular game Candy Crush. The data is stored in a 2D array, with each fruit being a different number from 1-5. If there is no fruit in a 2D array element, then it is marked with a 0. This game runs until stopped by the user. The front-end is done through the GUI included in Java
 
+## Instructions for use
+1. Clone file
+2. Replace the access to the fruit images with the correct path
+3. Enjoy!
+
 ## GUI
 
 ### Front-End
